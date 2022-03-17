@@ -1,0 +1,59 @@
+{
+  "info": {
+    "_postman_id": "75e343f7-e2e1-43af-8cb3-934307b2884d",
+    "name": "Dxc",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Dxc",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Diez x Ciento\", () => {",
+              "  const responseJson = pm.response.json();",
+              "  pm.expect(responseJson.ahorro).to.eql(5000000);",
+              "  pm.expect(responseJson.dxc).to.eql(1000000);",
+              "});",
+              "",
+              "pm.test(\"Codigo de estado 200\", () => {",
+              "  pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/rest/msdxc/dxc?ahorro=5000000&sueldo=1000000",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "rest",
+            "msdxc",
+            "dxc"
+          ],
+          "query": [
+            {
+              "key": "ahorro",
+              "value": "5000000"
+            },
+            {
+              "key": "sueldo",
+              "value": "1000000"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
