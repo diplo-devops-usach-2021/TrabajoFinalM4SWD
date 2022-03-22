@@ -5,6 +5,7 @@ import com.devops.dxc.devops.model.Tramo;
 import com.devops.dxc.devops.model.Uf;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -61,6 +62,7 @@ public class DiezPorCientoService {
      *
      * @return
      */
+    @Cacheable
     public int obtieneUF() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-YYYY");
         Uf uf = restTemplate.getForObject("https://mindicador.cl/api/uf/{fecha}", Uf.class, formatter.format(LocalDate.now()));

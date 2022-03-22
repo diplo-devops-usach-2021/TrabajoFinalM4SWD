@@ -5,6 +5,7 @@ import com.devops.dxc.devops.services.DiezPorCientoService;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +16,7 @@ import static lombok.AccessLevel.PRIVATE;
 @RequiredArgsConstructor
 @FieldDefaults(level = PRIVATE, makeFinal = true)
 @Slf4j
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET})
 public class RestData {
 
     DiezPorCientoService diezPorCientoService;

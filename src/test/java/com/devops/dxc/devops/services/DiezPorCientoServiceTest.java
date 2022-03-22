@@ -3,26 +3,19 @@ package com.devops.dxc.devops.services;
 import com.devops.dxc.devops.model.Serie;
 import com.devops.dxc.devops.model.Tramo;
 import com.devops.dxc.devops.model.Uf;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class DiezPorCientoServiceTest {
@@ -36,7 +29,7 @@ class DiezPorCientoServiceTest {
     Uf uf;
 
     @BeforeEach
-    void init(){
+    void init() {
         uf = new Uf();
         Serie serie = new Serie();
         serie.setValor(30000);

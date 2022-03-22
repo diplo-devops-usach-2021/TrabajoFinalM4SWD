@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1 class="text-success">2do retiro 10%</h1>
+    <div class="row">
+        <div class="col-6">
+            <div class="row">
+                <div class="col">
+                    <input type="number" name="ahorro" id="ahorro" class="form-control" placeholder="Ahorro"/>
+                </div>
+                <div class="col">
+                    <input type="number" name="sueldo" id="sueldo" class="form-control" placeholder="Sueldo"/>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <button class="btn btn-md btn-primary" type="button" id="btnCalcularRetiro">
+                    Calcular retiro
+                </button>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="row d-none" id="divResultado">
+                <h1>Resultados:</h1>
+                <label class="fw-bold">Ahorro: </label><span id="lblAhorro"></span>
+                <label class="fw-bold">Sueldo: </label><span id="lblSueldo"></span>
+                <label class="fw-bold">Su 10%: </label><span id="lbl10"></span>
+                <label class="fw-bold">Saldo: </label><span id="lblSaldo"></span>
+                <label class="fw-bold">Impuesto: </label><span id="lblImpuesto"></span>
+                <label class="fw-bold">Detalle impuesto: </label><span id="lblDetalleImpuesto"></span>
+                <label class="fw-bold">% del impuesto: </label><span id="lblPorcentajeImp"></span>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+        $(function(){
+            $("#btnCalcularRetiro").on("click",function(){
+                $.ajax({
+                    url: 'http://localhost:8080/rest/msdxc/dxc',
+                    type: 'get',
+                    data: {
+                        sueldo: $("#sueldo").val(),
+                        ahorro: $("#ahorro").val(),
+                    },
+                    success(r){
+                        $("#lblAhorro").text(r.ahorro)
+                        $("#lblSueldo").text(r.sueldo)
+                        $("#lbl10").text(r.dxc)
+                        $("#lblImpuesto").text(r.impuesto)
+                        $("#lblDetalleImpuesto").text(r.detalleImpuesto)
+                        $("#lblPorcentajeImp").text(r.porcentajeImpuesto)
+                        $("#lblSaldo").text(r.saldo)
+                        $("#divResultado").removeClass("d-none")
+                    },
+                    error(error){
+                        $("#divResultado").addClass("d-none")
+                        console.log({error})
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+</html>
