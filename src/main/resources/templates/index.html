@@ -46,7 +46,7 @@
         $(function(){
             $("#btnCalcularRetiro").on("click",function(){
                 $.ajax({
-                    url: 'http://localhost:8080/rest/msdxc/dxc',
+                    url: 'http://localhost:9090/rest/msdxc/dxc',
                     type: 'get',
                     data: {
                         sueldo: $("#sueldo").val(),
