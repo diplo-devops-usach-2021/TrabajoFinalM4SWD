@@ -28,7 +28,7 @@ pipeline {
         stage("Run"){
             steps {
                 script {
-                    sh 'nohup bash mvnw spring-boot:run &'
+                    sh 'nohup bash mvnw spring-boot:run -Dserver.port=9090 &'
                     sleep(15)
                 }
             }
