@@ -7,38 +7,38 @@ pipeline {
         stage("Compile"){
             steps {
                 script {
-                        sh './mvnw clean compile -e'
+                    sh './mvnw clean compile -e'
                 }
             }
         }
         stage("Test"){
             steps {
                 script {
-                        sh './mvnw clean test -e'
+                    sh './mvnw clean test -e'
                 }
             }
         }
         stage("Jar"){
             steps {
                 script {            
-                        sh './mvnw clean package -e'
+                    sh './mvnw clean package -e'
                 }
             }
         }
         stage("Run"){
             steps {
                 script {
-                        sh 'nohup bash mvnw spring-boot:run &'
-                        sleep(30)
+                    sh 'nohup bash mvnw spring-boot:run &'
+                    sleep(15)
                 }
             }
         }
         stage("Postman Test"){
             steps {
                 script {
-                        nodejs('NodeJS') {
-                            sh "newman run src/test/resources/postman/postman.json"
-                        }
+                    nodejs('NodeJS') {
+                        sh "newman run src/test/resources/postman/postman.json"
+                    }
                 }
             }
         }
