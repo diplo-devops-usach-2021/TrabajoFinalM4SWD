@@ -42,19 +42,5 @@ pipeline {
                 }
             }
         }
-        stage("Selenium Test"){
-            steps {
-                script {
-                    sh "echo selenium"
-                }
-            }
-        }
-        stage("JMeter Test"){
-            steps {
-                script {
-                    sh "echo jmeter"
-                }
-            }
-        }
     }
 }
